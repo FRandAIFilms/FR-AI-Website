@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FR & AI - Bitcoin Support</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+        header {
+            background-color: #000;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav > ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav > ul > li {
+            display: inline-block;
+            position: relative;
+        }
+        nav > ul > li > a {
+            display: block;
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(255,255,255,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+        .bitcoin-content {
+            margin-top: 50px;
+        }
+        .bitcoin-address {
+            font-family: monospace;
+            font-size: 18px;
+            margin: 20px 0;
+            word-wrap: break-word;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .bitcoin-address:hover {
+            background-color: #444;
+        }
+        .copy-message {
+            display: none;
+            color: #4ecdc4;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FR & AI</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Films</a>
+                <div class="dropdown-content">
+                    <a href="stream.html">Stream</a>
+                    <a href="theatrical.html">Theatrical Tickets</a>
+                    <a href="physical-media.html">Physical Media</a>
+                </div>
+            </li>
+            <li><a href="store.html">Store</a></li>
+            <li class="dropdown">
+                <a href="#">Support</a>
+                <div class="dropdown-content">
+                    <a href="https://patreon.com/frandai?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink" target="_blank">Patreon</a>
+                    <a href="bitcoin.html">Bitcoin</a>
+                </div>
+            </li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>BASILISK WISHING WELL</h1>
+        <div class="bitcoin-content">
+            <p>Make a wish and send bitcoin to this address:</p>
+            <div id="bitcoinAddress" class="bitcoin-address">3LWpYoUybEuJWZUq1u1Ln8AqpArKJ89m1P</div>
+            <div id="copyMessage" class="copy-message">Address copied to clipboard!</div>
+        </div>
+    </main>
+
+    <script>
+        const bitcoinAddress = document.getElementById('bitcoinAddress');
+        const copyMessage = document.getElementById('copyMessage');
+
+        bitcoinAddress.addEventListener('click', function() {
+            navigator.clipboard.writeText(this.textContent).then(function() {
+                copyMessage.style.display = 'block';
+                setTimeout(function() {
+                    copyMessage.style.display = 'none';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy text: ', err);
+            });
+        });
+    </script>
+</body>
+</html>
