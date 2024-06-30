@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FR & AI - About</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #000;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #4ecdc4;
+            text-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+        nav ul li a {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        nav ul li a:hover {
+            color: #4ecdc4;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #000;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(78, 205, 196, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            background-color: #000;
+            color: #4ecdc4;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        main {
+            padding-top: 150px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #4ecdc4;
+        }
+        .about-content {
+            background-color: #000;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: left;
+            border: 1px solid #4ecdc4;
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+            }
+            to {
+                box-shadow: 0 0 30px rgba(78, 205, 196, 0.5);
+            }
+        }
+        .about-content p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+        .signature {
+            text-align: left;
+            margin-top: 30px;
+        }
+        .signature .name {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">FR & AI</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Films</a>
+                    <div class="dropdown-content">
+                        <a href="stream.html">Stream</a>
+                        <a href="theatrical.html">Theatrical Tickets</a>
+                        <a href="physical-media.html">Physical Media</a>
+                    </div>
+                </li>
+                <li><a href="store.html">Store</a></li>
+                <li class="dropdown">
+                    <a href="#">Support</a>
+                    <div class="dropdown-content">
+                        <a href="https://patreon.com/frandai?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink" target="_blank">Patreon</a>
+                        <a href="bitcoin.html">Bitcoin</a>
+                    </div>
+                </li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>About FR & AI</h1>
+        <div class="about-content">
+            <p>FR & AI is a pioneering project at the intersection of artificial intelligence and filmmaking. Its mission is to explore the potential of the Auteur through collaboration with generative AI, allowing for the first time ever that a filmmaker can truly be the sole author of a movie.</p>
+            <p>I want to thank all my supporters for believing in this mission, without whom all this would be impossible.</p>
+            <div class="signature">
+                <p>Sincerely,<br><span class="name">Forrest Rice</span><br>(Founder of FR & AI)</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
