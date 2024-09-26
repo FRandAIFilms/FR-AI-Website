@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lending Type Selection</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #banner {
+            height: 100px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropbtn {
+            background-color: #3498db;
+            color: white;
+            padding: 16px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        #popup {
+            position: fixed;
+            bottom: -100vh;
+            right: 20px;
+            width: 200px;
+            height: 200px;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            transition: bottom 0.5s ease-in-out;
+        }
+        #popup video {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Circular shape */
+        }
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <img src="Kind lending logo.jpg" alt="Kind Lending Logo" style="max-height: 100px; width: auto;">
+    </div>
+    <div id="content">
+        <!-- New image added above the button -->
+        <img src="kind lending dog.png" alt="Kind Lending Dog" style="max-width: 200px; margin-bottom: 20px;">
+        <div class="dropdown">
+            <!-- Changed button text to Lending Options -->
+            <button class="dropbtn">Lending Options</button>
+            <div class="dropdown-content">
+                <a href="#" onclick="showPopup('SMALL'); return false;">SMALL</a>
+                <a href="#" onclick="showPopup('MEDIUM'); return false;">MEDIUM</a>
+                <a href="#" onclick="showPopup('LARGE'); return false;">LARGE</a>
+            </div>
+        </div>
+    </div>
+    <div id="popup">
+        <!-- Use a video tag for the Bulldog Cropped.webm video -->
+        <video id="popup-video" autoplay muted loop playsinline></video>
+        <span id="popup-text"></span>
+    </div>
+
+    <script>
+        const images = {
+            SMALL: "/api/placeholder/80/80?text=Small",
+            MEDIUM: "/api/placeholder/80/80?text=Medium"
+        };
+
+        let popupTimeout;
+        let isAnimating = false;
+
+        function showPopup(type) {
+            const popup = document.getElementById('popup');
+            const popupVideo = document.getElementById('popup-video');
+            const popupText = document.getElementById('popup-text');
+
+            clearTimeout(popupTimeout);
+
+            if (isAnimating) {
+                // Hide the popup before showing the next one
+                popup.style.transition = 'none'; // Disable animation for instant hide
+                popup.style.bottom = '-100vh'; // Move it down immediately
+                setTimeout(() => {
+                    // After the instant hide, proceed with showing the new popup
+                    popup.style.transition = 'bottom 0.5s ease-in-out'; // Re-enable transition
+                    displayPopupContent(type);
+                }, 50);
+            } else {
+                displayPopupContent(type);
+            }
+        }
+
+        function displayPopupContent(type) {
+            const popup = document.getElementById('popup');
+            const popupVideo = document.getElementById('popup-video');
+            const popupText = document.getElementById('popup-text');
+
+            if (type === 'LARGE') {
+                popupVideo.src = 'Bulldog Cropped.webm'; // Point to the WebM file
+                popupVideo.style.display = 'block'; // Show the video
+                popupText.textContent = ''; // Clear any text for LARGE
+            } else {
+                popupVideo.src = ''; // Clear the video for other types
+                popupText.textContent = `${type} lending type selected`; // Show text for other types
+            }
+
+            // Show the popup
+            isAnimating = true;
+            popup.style.bottom = '20px';
+
+            // Set timeout to hide the popup after 3 seconds (changed from 4.5)
+            popupTimeout = setTimeout(() => {
+                popup.style.bottom = '-100vh';
+                isAnimating = false;
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
